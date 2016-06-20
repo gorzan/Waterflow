@@ -21,7 +21,7 @@ def waterflow():
 
 	#check if loc is defined
 	if 'text' not in request.args:
-		return "Hvilket vassdrag vil du vite vannføringen i?. Bruk '/vannføring [vassdrag]'."
+		return "Hvilket vassdrag vil du vite vannføringen i?. Bruk '/vannføring [målestasjon]'."
 
 	#get input from slack
 	vassdrag = request.args.get('text').lower()
@@ -45,7 +45,7 @@ def waterflow():
 		river[link.text.lower()] = link['href'][:-11]
 
 	if vassdrag not in river:
-		return "Ukjent vassdrag."
+		return "Ukjent målestasjon."
 
 
 	#create response dict
