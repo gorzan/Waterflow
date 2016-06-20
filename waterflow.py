@@ -19,6 +19,10 @@ def waterflow():
 	#get input from slack
 	vassdrag = request.args.get('text').lower()
 
+	#check if drammen
+	if 'drammen' in vassdrag.lower():
+		return 'LaksBot støtter ikke Drammen og omegn.'
+
 	#basic url
 	base_url = 'http://www2.nve.no/h/hd/plotreal/Q/'
 	list_url = base_url + 'list.html'
@@ -40,6 +44,7 @@ def waterflow():
 	#create response dict
 	output = {}
 	output['response_type'] = 'in_channel'
+	output['text'] = river[vassdrag]
 	output['image_url'] = base_url + river[vassdrag] + '/plot.gif'
 
 	json_response = json.dumps(output)
