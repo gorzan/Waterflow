@@ -37,7 +37,6 @@ def waterflow():
 		return "Ukjent vassdrag."
 
 
-
 	#create response dict
 	output = {}
 	output['response_type'] = 'in_channel'
