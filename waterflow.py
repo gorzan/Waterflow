@@ -31,7 +31,7 @@ def waterflow():
 	river = {}
 	for tr in rows:
 		link = tr.find('a', href=True)
-		river[link.text] = link['href'][:-11]
+		river[link.text.lower()] = link['href'][:-11]
 
 	if vassdrag not in river:
 		return "Ukjent vassdrag."
@@ -40,7 +40,7 @@ def waterflow():
 	#create response dict
 	output = {}
 	output['response_type'] = 'in_channel'
-	output['text'] = base_url + river[vassdrag] + '.gif'
+	output['image_url'] = base_url + river[vassdrag] + '/plot.gif'
 
 	json_response = json.dumps(output)
 
