@@ -11,12 +11,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def waterflow():
-	token = 'oMIDPAKrLgAvVogcR96f4sDi'
+	token = ['oMIDPAKrLgAvVogcR96f4sDi', 'EOH8mNX8jcoAXvMWJxNPqmWE']
 
 	#check if valid request
 	if 'token' not in request.args:
 		return ''
-	if request.args.get('token') != token:
+	if request.args.get('token') not in token:
 		return ''
 
 	#check if loc is defined
