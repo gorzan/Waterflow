@@ -42,10 +42,12 @@ def waterflow():
 
 
 	#create response dict
+	attachments = {}
+	attachments['image_url'] = base_url + river[vassdrag] + '/plot.gif'
 	output = {}
 	output['response_type'] = 'in_channel'
-	output['text'] = river[vassdrag]
-	output['image_url'] = base_url + river[vassdrag] + '/plot.gif'
+	output['text'] = vassdrag.title() + ':'
+	output['attachments'] = attachments
 
 	json_response = json.dumps(output)
 
