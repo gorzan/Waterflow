@@ -11,7 +11,14 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def waterflow():
-	
+	token = 'oMIDPAKrLgAvVogcR96f4sDi'
+
+	#check if valid request
+	if 'token' not in request.args:
+		return ''
+	if request.args.get('token') != token:
+		return ''
+
 	#check if loc is defined
 	if 'text' not in request.args:
 		return "Hvilket vassdrag vil du vite vannføringen i?. Bruk '/vannføring [vassdrag]'."
@@ -43,7 +50,7 @@ def waterflow():
 
 	#create response dict
 	attachments = {}
-	attachments['image_url'] = base_url + river[vassdrag] + '/plot.gif'
+	attachments['text'] = base_url + river[vassdrag] + '/plot.gif'
 	output = {}
 	output['response_type'] = 'in_channel'
 	output['text'] = vassdrag.title() + ':'
