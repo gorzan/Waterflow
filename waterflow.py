@@ -14,10 +14,10 @@ def waterflow():
 	token = 'oMIDPAKrLgAvVogcR96f4sDi'
 
 	#check if valid request
-	#if 'token' not in request.args:
-	#	return ''
-	#if request.args.get('token') != token:
-	#	return ''
+	if 'token' not in request.args:
+		return ''
+	if request.args.get('token') != token:
+		return ''
 
 	#check if loc is defined
 	if 'text' not in request.args:
